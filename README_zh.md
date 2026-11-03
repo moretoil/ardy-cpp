@@ -35,7 +35,7 @@
 
 ## 1. 下载模型资产
 
-模型权重托管在 Hugging Face 仓库中，下载后解压放置在 `models/` 目录下即可：
+模型权重现已统一托管在 Hugging Face 仓库：[**foxdream/ardy-cpp**](https://huggingface.co/foxdream/ardy-cpp)
 
 | 模型集 | 存储大小 | 推荐运行设备 | 特点说明 |
 | :--- | ---: | :--- | :--- |
@@ -43,11 +43,15 @@
 | **`models/fp16`** | **372 MB** | **GPU (DirectML 推荐)** | 半精度权重存储 + FP32 纯显卡执行，生成仅需 ~80 毫秒/窗口 |
 | **`models/int4`** | **167 MB** | 极简端侧设备 | 4-bit 块量化，体积最小，低能量动作略软 |
 
-每个模型子文件夹内均包含：
-- `text_encoder.onnx`：蒸馏版轻量 MiniLM 文本编码器（代替原版 16GB 的 LLaMA-3-8B）。
-- `denoiser.onnx`：自回归去噪扩散主干网络（含文本引导 CFG 分支）。
-- `decoder.onnx`：FSQ 潜变量解码与正向运动学（FK 已打平进图）。
-- `model.json` 与 `vocab.txt`：张量维度定义、采样时间表与分词词表。
+你可以使用 `huggingface-cli` 快速将模型下载到 `models/` 目录下：
+
+```bash
+# 一键下载全部模型集到 models/ 目录
+huggingface-cli download foxdream/ardy-cpp --local-dir models
+
+# 或者只下载 CPU 推荐的 int8 模型
+huggingface-cli download foxdream/ardy-cpp --include "int8/*" --local-dir models
+```
 
 ---
 

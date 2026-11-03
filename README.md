@@ -37,7 +37,7 @@ Designed in the spirit of `sam.cpp` and `llama.cpp`: **zero Python, zero PyTorch
 
 ## 1. Download Model Assets
 
-The model weights are hosted separately on Hugging Face:
+The model weights are hosted on Hugging Face at [**foxdream/ardy-cpp**](https://huggingface.co/foxdream/ardy-cpp):
 
 | Model Set | Size | Recommended For | Notes |
 | :--- | ---: | :--- | :--- |
@@ -45,7 +45,15 @@ The model weights are hosted separately on Hugging Face:
 | **`models/fp16`** | **372 MB** | **GPU (DirectML)** | Half-precision weight storage; runs at ~80 ms/window on GPUs |
 | **`models/int4`** | **167 MB** | Embedded / Minimal | 4-bit block quantization; lowest disk footprint |
 
-Download and place the extracted model directory under `models/` (e.g. `models/int8` or `models/fp16`).
+You can download all models or just the specific one you need using `huggingface-cli` or `git`:
+
+```bash
+# Download all model sets into models/
+huggingface-cli download foxdream/ardy-cpp --local-dir models
+
+# Or download only the CPU (int8) model:
+huggingface-cli download foxdream/ardy-cpp --include "int8/*" --local-dir models
+```
 
 Each model folder contains:
 - `text_encoder.onnx`: Distilled MiniLM text conditioning student.
