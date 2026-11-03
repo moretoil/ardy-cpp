@@ -1,0 +1,22 @@
+# Build outputs
+build/
+bin/
+*.obj
+*.o
+*.pdb
+*.ilk
+*.dll
+*.exe
+
+# Model assets (distributed separately on Hugging Face)
+models/
+
+# Generated motion files
+*.bvh
+*.ardy
+
+# IDEs & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
