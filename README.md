@@ -1,5 +1,7 @@
 # ardy-cpp
 
+**English** | [简体中文](README_zh.md)
+
 [![Language](https://img.shields.io/badge/language-C%2B%2B17-blue.svg)](https://en.wikipedia.org/wiki/C%2B%2B17)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-lightgrey.svg)]()
 [![Backend](https://img.shields.io/badge/backend-ONNX%20Runtime%20%7C%20DirectML-green.svg)]()
